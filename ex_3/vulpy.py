@@ -3,7 +3,7 @@
 from pathlib import Path
 
 from flask import Flask, g, redirect, request
-
+import os
 import libsession
 from mod_api import mod_api
 from mod_csp import mod_csp
@@ -13,7 +13,7 @@ from mod_posts import mod_posts
 from mod_user import mod_user
 
 app = Flask('vulpy')
-app.config['SECRET_KEY'] = 'aaaaaaa'
+app.config['SECRET_KEY'] = os.environ["SECRET_KEY"]
 
 app.register_blueprint(mod_hello, url_prefix='/hello')
 app.register_blueprint(mod_user, url_prefix='/user')
